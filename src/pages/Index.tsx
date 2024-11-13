@@ -8,7 +8,7 @@ import HoithLogo from "@/components/HoithLogo";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-brand-light">
       <nav className="border-b border-neutral-200 bg-white">
         <div className="max-w-7xl mx-auto px-8 py-4">
           <HoithLogo />
@@ -18,8 +18,8 @@ const Index = () => {
       <div className="p-8">
         <div className="max-w-7xl mx-auto space-y-8">
           <header className="mb-12">
-            <h1 className="text-3xl font-bold">Market Dashboard</h1>
-            <p className="text-neutral-500 mt-2">Hoith Group Financial Analytics Platform</p>
+            <h1 className="text-3xl font-bold text-brand-dark">Market Dashboard</h1>
+            <p className="text-brand-purple mt-2">Hoith Group Financial Analytics Platform</p>
           </header>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -32,6 +32,11 @@ export default {
           DEFAULT: "#10B981",
           foreground: "#FFFFFF",
         },
+        brand: {
+          purple: "#7E69AB",
+          light: "#F1F0FB",
+          dark: "#1A1F2C",
+        },
         success: "#10B981",
         warning: "#F59E0B",
         danger: "#EF4444",
