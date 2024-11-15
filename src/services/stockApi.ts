@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ALPHA_VANTAGE_API_KEY = 'YOUR_API_KEY'; // Replace with your Alpha Vantage API key
+const ALPHA_VANTAGE_API_KEY = 'I8T9QALRQ3131RDL';
 const BASE_URL = 'https://www.alphavantage.co/query';
 
 export interface StockData {
