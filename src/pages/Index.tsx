@@ -4,6 +4,8 @@ import NewsFeed from "@/components/NewsFeed";
 import KPIMetric from "@/components/KPIMetric";
 import PortfolioSummary from "@/components/PortfolioSummary";
 import MarketSentiment from "@/components/MarketSentiment";
+import PortfolioAnalytics from "@/components/PortfolioAnalytics";
+import RiskAnalytics from "@/components/RiskAnalytics";
 import HoithLogo from "@/components/HoithLogo";
 
 const Index = () => {
@@ -18,7 +20,7 @@ const Index = () => {
       <div className="p-8">
         <div className="max-w-7xl mx-auto space-y-8">
           <header className="mb-12">
-            <h1 className="text-3xl font-bold text-brand-dark">Market Dashboard</h1>
+            <h1 className="text-3xl font-bold text-brand-dark">Institutional Asset Management</h1>
             <p className="text-brand-purple mt-2">Hoith Group Financial Analytics Platform</p>
           </header>
 
@@ -37,16 +39,23 @@ const Index = () => {
             </div>
           </div>
 
+          <PortfolioAnalytics />
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <PortfolioSummary />
-            <MarketSentiment />
+            <RiskAnalytics />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <KPIMetric label="Trading Volume" value="2.3M" subValue="+12.5% vs last week" />
-            <KPIMetric label="Market Cap" value="$892.4B" subValue="Technology Sector" />
-            <KPIMetric label="P/E Ratio" value="24.5" subValue="Industry avg: 22.3" />
-            <KPIMetric label="Dividend Yield" value="2.15%" subValue="Annual yield" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div>
+              <MarketSentiment />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <KPIMetric label="AUM" value="$8.92B" subValue="+2.5% MoM" />
+              <KPIMetric label="YTD Return" value="12.5%" subValue="+150bps vs benchmark" />
+              <KPIMetric label="Active Risk" value="3.2%" subValue="Within target range" />
+              <KPIMetric label="Information Ratio" value="1.85" subValue="Above target" />
+            </div>
           </div>
         </div>
       </div>
