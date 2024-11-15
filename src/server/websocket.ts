@@ -1,4 +1,4 @@
-import { WebSocketServer } from 'ws';
+import { WebSocketServer, WebSocket } from 'ws';
 import express from 'express';
 import http from 'http';
 
@@ -6,13 +6,13 @@ const app = express();
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
-// Store connected clients
-const clients = new Set();
+// Store connected clients with proper typing
+const clients: Set<WebSocket> = new Set();
 
 // Function to broadcast data to all connected clients
 const broadcast = (data: any) => {
   clients.forEach(client => {
-    if (client.readyState === 1) { // WebSocket.OPEN
+    if (client.readyState === WebSocket.OPEN) {
       client.send(JSON.stringify(data));
     }
   });
