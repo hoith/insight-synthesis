@@ -9,12 +9,12 @@ interface StockData {
 
 const StockChart = () => {
   const [data, setData] = useState<StockData[]>([
-    { date: "Jan", value: 4000 },
-    { date: "Feb", value: 3000 },
-    { date: "Mar", value: 5000 },
-    { date: "Apr", value: 4500 },
-    { date: "May", value: 6000 },
-    { date: "Jun", value: 5500 },
+    { date: new Date().toLocaleTimeString(), value: 4000 },
+    { date: new Date(Date.now() - 1000).toLocaleTimeString(), value: 3000 },
+    { date: new Date(Date.now() - 2000).toLocaleTimeString(), value: 5000 },
+    { date: new Date(Date.now() - 3000).toLocaleTimeString(), value: 4500 },
+    { date: new Date(Date.now() - 4000).toLocaleTimeString(), value: 6000 },
+    { date: new Date(Date.now() - 5000).toLocaleTimeString(), value: 5500 },
   ]);
 
   useWebSocket("wss://your-websocket-url/stocks", (newData) => {

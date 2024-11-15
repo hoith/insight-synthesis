@@ -27,8 +27,8 @@ const NewsFeed = () => {
     },
   ]);
 
-  useWebSocket("wss://your-websocket-url/news", (data) => {
-    setNews((prevNews) => [data, ...prevNews.slice(0, 9)]);
+  useWebSocket("wss://your-websocket-url/news", (newData) => {
+    setNews((prevNews) => [newData, ...prevNews.slice(0, -1)]);
   });
 
   return (
