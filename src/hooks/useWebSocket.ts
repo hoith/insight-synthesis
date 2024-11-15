@@ -6,43 +6,41 @@ export const useWebSocket = (url: string, onMessage: (data: any) => void) => {
   const { toast } = useToast();
 
   useEffect(() => {
-    // For demo purposes, we'll simulate WebSocket data since we don't have a real WebSocket server
-    const interval = setInterval(() => {
-      // Simulate stock data updates
-      if (url.includes('stocks')) {
-        const randomValue = 4000 + Math.random() * 2000;
-        const currentDate = new Date();
-        onMessage({
-          date: currentDate.toLocaleTimeString(),
-          value: randomValue
-        });
-      }
+    // Connect to local WebSocket server
+    const wsUrl = 'ws://localhost:8080';
+    ws.current = new WebSocket(wsUrl);
+
+    ws.current.onopen = () => {
+      toast({
+        title: "Connected to real-time feed",
+        description: "You're now receiving live updates",
+      });
+    };
+
+    ws.current.onmessage = (event) => {
+      const data = JSON.parse(event.data);
       
-      // Simulate news updates
-      if (url.includes('news')) {
-        const newsItems = [
-          "Federal Reserve Announces Policy Changes",
-          "Tech Sector Shows Strong Growth",
-          "Global Markets React to Economic Data",
-          "Cryptocurrency Markets See Volatility",
-          "Major Merger Announced in Finance Sector"
-        ];
-        
-        onMessage({
-          title: newsItems[Math.floor(Math.random() * newsItems.length)],
-          time: "Just now",
-          source: "Financial Times"
-        });
+      // Route data to appropriate handler based on type
+      if (url.includes('stocks') && data.type === 'stock') {
+        onMessage(data);
+      } else if (url.includes('news') && data.type === 'news') {
+        onMessage(data);
       }
-    }, 5000); // Update every 5 seconds
+    };
 
-    // Simulate connection success
-    toast({
-      title: "Connected to real-time feed",
-      description: "You're now receiving live updates",
-    });
+    ws.current.onerror = () => {
+      toast({
+        variant: "destructive",
+        title: "Connection error",
+        description: "Failed to connect to real-time feed",
+      });
+    };
 
-    return () => clearInterval(interval);
+    return () => {
+      if (ws.current) {
+        ws.current.close();
+      }
+    };
   }, [url, onMessage, toast]);
 
   return ws.current;

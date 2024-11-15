@@ -18,7 +18,10 @@ const StockChart = () => {
   ]);
 
   useWebSocket("wss://your-websocket-url/stocks", (newData) => {
-    setData((prevData) => [...prevData.slice(1), newData]);
+    setData((prevData) => [...prevData.slice(1), { 
+      date: newData.date,
+      value: newData.value 
+    }]);
   });
 
   return (
