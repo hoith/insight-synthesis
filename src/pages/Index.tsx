@@ -25,9 +25,9 @@ const Index = () => {
           </header>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <MarketCard title="S&P 500" value="4,783.45" change={1.23} trend="up" />
-            <MarketCard title="NASDAQ" value="14,532.23" change={0.89} trend="up" />
-            <MarketCard title="DOW JONES" value="37,221.78" change={0.45} trend="down" />
+            <MarketCard title="S&P 500" symbol="SPY" />
+            <MarketCard title="NASDAQ" symbol="QQQ" />
+            <MarketCard title="DOW JONES" symbol="DIA" />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
